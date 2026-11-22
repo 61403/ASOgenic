@@ -28,6 +28,9 @@ required = [
   "CODE_OF_CONDUCT.md",
   "SECURITY.md",
   "SUPPORT.md",
+  "tests/test_asc_client_contract.py",
+  "tests/test_local_stdio.py",
+  "uv.lock",
 ]
 
 [manifest]
@@ -302,3 +305,12 @@ destination = ".github/workflows/public-artifact-gate.yml"
 [[files]]
 source = "scripts/smoke_public_wheel.py"
 destination = "scripts/smoke_public_wheel.py"
+
+[[files]]
+source = "tests/test_asc_client_contract.py"
+
+[[files]]
+source = "tests/test_local_stdio.py"
+
+[[files]]
+source = "uv.lock"

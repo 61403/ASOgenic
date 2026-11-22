@@ -188,14 +188,18 @@ instruction whenever a task might change App Store Connect state.
 ## Development and release checks
 
 ```sh
-python -m pip install -e .
+python -m pip install -e ".[test]"
+python -m pytest
 python scripts/verify_public_artifact.py verify . --manifest release/public-artifact.toml
 python scripts/verify_public_artifact.py build-check . --manifest release/public-artifact.toml
 ```
 
+For a reproducible development environment with the reviewed dependency lock,
+use `uv sync --extra test --locked` and run tests with `uv run pytest`.
+
 The pull-request workflow also builds the wheel and source distribution,
-compares them against the reviewed allowlist, and smoke-tests the installed
-local MCP server.
+compares them against the reviewed allowlist, runs the offline local-MCP
+behavior tests, and smoke-tests the installed local MCP server.
 
 ## Community
 

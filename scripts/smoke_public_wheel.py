@@ -51,7 +51,7 @@ def _receive_json(process: subprocess.Popen[str], selector: selectors.BaseSelect
     return message
 
 
-def _stdio_inventory(command: list[str]) -> set[str]:
+def _stdio_inventory(command: list[str], *, environment: dict[str, str]) -> set[str]:
     process = subprocess.Popen(
         command,
         stdin=subprocess.PIPE,
@@ -59,7 +59,7 @@ def _stdio_inventory(command: list[str]) -> set[str]:
         stderr=subprocess.PIPE,
         text=True,
         bufsize=1,
-        env={**os.environ, "ASC_KEY_ID": "", "ASC_ISSUER_ID": "", "ASC_P8_PATH": ""},
+        env=environment,
     )
     try:
         if process.stdin is None or process.stdout is None:
@@ -108,6 +108,23 @@ def _stdio_inventory(command: list[str]) -> set[str]:
             raise SmokeError(f"required local tools are missing: {sorted(missing)}")
         if leaked:
             raise SmokeError(f"hosted-only tools leaked into local catalog: {sorted(leaked)}")
+        process.stdin.write(
+            json.dumps(
+                {
+                    "jsonrpc": "2.0",
+                    "id": 3,
+                    "method": "tools/call",
+                    "params": {"name": "asogenic_auth_status", "arguments": {}},
+                }
+            )
+            + "\n"
+        )
+        process.stdin.flush()
+        auth_status = _receive_json(process, selector)
+        if auth_status.get("id") != 3 or "result" not in auth_status:
+            raise SmokeError(f"unexpected auth-status response: {auth_status}")
+        if auth_status["result"].get("isError"):
+            raise SmokeError(f"local auth-status tool failed: {auth_status['result']}")
         return names
     finally:
         process.terminate()
@@ -156,7 +173,16 @@ def smoke_wheel(wheel: Path) -> set[str]:
             raise SmokeError(f"installed wheel boundary check failed:\n{import_check.stderr}")
         if not executable.is_file():
             raise SmokeError("wheel did not install the asogenic-local entry point")
-        return _stdio_inventory([str(executable)])
+        return _stdio_inventory(
+            [str(executable)],
+            environment={
+                **os.environ,
+                "ASC_KEY_ID": "",
+                "ASC_ISSUER_ID": "",
+                "ASC_P8_PATH": "",
+                "ASOGENIC_LOCAL_STATE_DIR": str(root / "state"),
+            },
+        )
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -168,7 +194,7 @@ def main(argv: list[str] | None = None) -> int:
     except (OSError, SmokeError, subprocess.SubprocessError) as exc:
         print(f"Installed-wheel smoke failed: {exc}", file=sys.stderr)
         return 1
-    print(f"Installed-wheel local stdio smoke passed ({len(names)} tools listed; no tool invoked)")
+    print(f"Installed-wheel local stdio smoke passed ({len(names)} tools listed; auth-status invoked)")
     return 0
 
 

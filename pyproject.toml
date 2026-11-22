@@ -5,9 +5,14 @@ description = "Local stdio MCP server for App Store Connect and ASO workflows"
 license = "MIT"
 requires-python = ">=3.11"
 dependencies = [
-    "fastmcp>=2.0",
-    "httpx>=0.27",
-    "cryptography>=42",
+    "fastmcp>=4.2.4,<5.0",
+    "httpx>=0.27,<1.0",
+    "cryptography>=42,<51.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0,<9.0",
 ]
 
 [project.scripts]
@@ -31,6 +36,11 @@ include = [
     "LICENSE",
     "pyproject.toml",
     "scripts/**",
+    "tests/**",
+    "uv.lock",
     "release/**",
     ".github/**",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
