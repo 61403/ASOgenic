@@ -1,0 +1,304 @@
+# Source-to-candidate allowlist for the public local stdio MCP core.
+# This manifest is the boundary contract between the public core and the
+# private hosted adapter; it is not a mechanism for mirroring private source.
+required = [
+  "src/asogenic/__init__.py",
+  "src/asogenic/aso/__init__.py",
+  "src/asogenic/catalog_local_setup.py",
+  "src/asogenic/catalog_media.py",
+  "src/asogenic/catalog_metadata.py",
+  "src/asogenic/catalog_post_launch.py",
+  "src/asogenic/catalog_release.py",
+  "src/asogenic/catalog_setup.py",
+  "src/asogenic/config.py",
+  "src/asogenic/context.py",
+  "src/asogenic/core_catalog.py",
+  "src/asogenic/errors.py",
+  "src/asogenic/local_runtime.py",
+  "src/asogenic/local_server.py",
+  "src/asogenic/logging_config.py",
+  "src/asogenic/models/__init__.py",
+  "src/asogenic/release.py",
+  "src/asogenic/services/__init__.py",
+  "src/asogenic/session.py",
+  "src/asogenic/tools/__init__.py",
+  "pyproject.toml",
+  "README.md",
+  "CONTRIBUTING.md",
+  "CODE_OF_CONDUCT.md",
+  "SECURITY.md",
+  "SUPPORT.md",
+]
+
+[manifest]
+status = "approved"
+
+[build]
+status = "approved"
+distribution = "asogenic"
+version = "1.5.3"
+build_backend = "hatchling.build"
+
+[build.approvals]
+ownership = true
+license = true
+provenance = true
+tree_history_secret_scan = true
+package_manifest_review = true
+local_boundary_review = true
+
+[build.evidence]
+release_owner = "61403"
+approved_at = "2026-11-20"
+license = "MIT"
+history_scope = "The public repository begins from the generated candidate; no private Git objects are copied."
+
+# Source package files required by the standalone local server and its catalog.
+[[files]]
+source = "src/asogenic/__init__.py"
+
+[[files]]
+source = "src/asogenic/aso/__init__.py"
+
+[[files]]
+source = "src/asogenic/aso/evidence_research.py"
+
+[[files]]
+source = "src/asogenic/aso/keyword_field_editor.py"
+
+[[files]]
+source = "src/asogenic/aso/keyword_scoring.py"
+
+[[files]]
+source = "src/asogenic/aso/listing_tokenizer.py"
+
+[[files]]
+source = "src/asogenic/aso/local_research_plan.py"
+
+[[files]]
+source = "src/asogenic/aso/metadata_assembler.py"
+
+[[files]]
+source = "src/asogenic/aso/network_errors.py"
+
+[[files]]
+source = "src/asogenic/aso/research_service.py"
+
+[[files]]
+source = "src/asogenic/aso/storefront_catalog.py"
+
+[[files]]
+source = "src/asogenic/aso/storefront_ids.py"
+
+[[files]]
+source = "src/asogenic/aso/storefront_indexing.py"
+
+[[files]]
+source = "src/asogenic/aso/top_app_ranking.py"
+
+[[files]]
+source = "src/asogenic/catalog_local_setup.py"
+
+[[files]]
+source = "src/asogenic/catalog_media.py"
+
+[[files]]
+source = "src/asogenic/catalog_metadata.py"
+
+[[files]]
+source = "src/asogenic/catalog_post_launch.py"
+
+[[files]]
+source = "src/asogenic/catalog_release.py"
+
+[[files]]
+source = "src/asogenic/catalog_setup.py"
+
+[[files]]
+source = "src/asogenic/config.py"
+
+[[files]]
+source = "src/asogenic/context.py"
+
+[[files]]
+source = "src/asogenic/core_catalog.py"
+
+[[files]]
+source = "src/asogenic/errors.py"
+
+[[files]]
+source = "src/asogenic/local_runtime.py"
+
+[[files]]
+source = "src/asogenic/local_server.py"
+
+[[files]]
+source = "src/asogenic/logging_config.py"
+
+[[files]]
+source = "src/asogenic/models/__init__.py"
+
+[[files]]
+source = "src/asogenic/models/keywords.py"
+
+[[files]]
+source = "src/asogenic/models/locales.py"
+
+[[files]]
+source = "src/asogenic/models/metadata.py"
+
+[[files]]
+source = "src/asogenic/models/storefront_listing.py"
+
+[[files]]
+# Required by the public ASO tool contract to authenticate returned pools;
+# this code is source, never user credential material, and remains under review.
+source = "src/asogenic/pool_signing.py"
+
+[[files]]
+source = "src/asogenic/release.py"
+
+[[files]]
+source = "src/asogenic/services/__init__.py"
+
+[[files]]
+source = "src/asogenic/services/apple_search_hints_client.py"
+
+[[files]]
+source = "src/asogenic/services/asc_auth.py"
+
+[[files]]
+source = "src/asogenic/services/asc_client.py"
+
+[[files]]
+source = "src/asogenic/services/itunes_search_client.py"
+
+[[files]]
+source = "src/asogenic/services/keyword_pool_cache.py"
+
+[[files]]
+source = "src/asogenic/services/request_throttler.py"
+
+[[files]]
+source = "src/asogenic/session.py"
+
+[[files]]
+source = "src/asogenic/tools/__init__.py"
+
+[[files]]
+source = "src/asogenic/tools/aso.py"
+
+[[files]]
+source = "src/asogenic/tools/auth_discovery.py"
+
+[[files]]
+source = "src/asogenic/tools/field_spec.py"
+
+[[files]]
+source = "src/asogenic/tools/media_io.py"
+
+[[files]]
+source = "src/asogenic/tools/media_specs.py"
+
+[[files]]
+source = "src/asogenic/tools/monetization.py"
+
+[[files]]
+source = "src/asogenic/tools/pool_serde.py"
+
+[[files]]
+source = "src/asogenic/tools/previews.py"
+
+[[files]]
+source = "src/asogenic/tools/product_pages.py"
+
+[[files]]
+source = "src/asogenic/tools/publish.py"
+
+[[files]]
+source = "src/asogenic/tools/readiness.py"
+
+[[files]]
+source = "src/asogenic/tools/release_setup.py"
+
+[[files]]
+source = "src/asogenic/tools/reviews.py"
+
+[[files]]
+source = "src/asogenic/tools/screenshots.py"
+
+[[files]]
+source = "src/asogenic/tools/session_serde.py"
+
+[[files]]
+source = "src/asogenic/tools/testflight.py"
+
+# This is intentionally optional until the rightsholder approves a license.
+# The source file does not exist; export remains usable for review, while the
+# build gate requires candidate/ LICENSE before a real build can proceed.
+[[files]]
+source = "release/public/LICENSE"
+destination = "LICENSE"
+optional = true
+
+# Candidate-only documentation and package metadata. No private README or docs
+# are swept into the export.
+[[files]]
+source = ".gitignore"
+
+[[files]]
+source = "release/public/README.md"
+destination = "README.md"
+
+[[files]]
+source = "release/public/CONTRIBUTING.md"
+destination = "CONTRIBUTING.md"
+
+[[files]]
+source = "CODE_OF_CONDUCT.md"
+
+[[files]]
+source = "release/public/SECURITY.md"
+destination = "SECURITY.md"
+
+[[files]]
+source = "SUPPORT.md"
+
+[[files]]
+source = "release/public/pyproject.toml"
+destination = "pyproject.toml"
+
+# The public repository verifies every PR from its own clean checkout. These
+# controls contain no private runtime code and are part of the reviewed source
+# distribution so the protection does not disappear after the initial export.
+[[files]]
+source = "release/public-artifact.toml"
+destination = "release/public-artifact.toml"
+
+[[files]]
+source = "scripts/verify_public_artifact.py"
+destination = "scripts/verify_public_artifact.py"
+
+[[files]]
+source = "release/public/.github/CODEOWNERS"
+destination = ".github/CODEOWNERS"
+
+[[files]]
+source = ".github/ISSUE_TEMPLATE/bug_report.yml"
+
+[[files]]
+source = ".github/ISSUE_TEMPLATE/feature_request.yml"
+
+[[files]]
+source = ".github/ISSUE_TEMPLATE/config.yml"
+
+[[files]]
+source = ".github/pull_request_template.md"
+
+[[files]]
+source = "release/public/.github/workflows/public-artifact-gate.yml"
+destination = ".github/workflows/public-artifact-gate.yml"
+
+[[files]]
+source = "scripts/smoke_public_wheel.py"
+destination = "scripts/smoke_public_wheel.py"

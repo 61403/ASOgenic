@@ -1,0 +1,36 @@
+[project]
+name = "asogenic"
+version = "1.5.3"
+description = "Local stdio MCP server for App Store Connect and ASO workflows"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp>=2.0",
+    "httpx>=0.27",
+    "cryptography>=42",
+]
+
+[project.scripts]
+asogenic-local = "asogenic.local_server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/asogenic"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/asogenic/**",
+    "README.md",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
+    "SECURITY.md",
+    "SUPPORT.md",
+    "LICENSE",
+    "pyproject.toml",
+    "scripts/**",
+    "release/**",
+    ".github/**",
+]

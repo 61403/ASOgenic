@@ -1,0 +1,39 @@
+name: Bug report
+description: Report a reproducible problem in the public local MCP core.
+title: "bug: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please remove credentials, private app data, customer data, and `.p8` contents.
+        For a security issue, use SECURITY.md instead of a public issue.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Include the expected and actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Configure …
+        2. Ask the agent to …
+        3. Observe …
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: ASOgenic version, OS, Python version, and AI client.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized logs or screenshots
+      description: Optional. Remove keys, tokens, app data, and personal information.

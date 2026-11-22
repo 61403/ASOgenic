@@ -1,0 +1,21 @@
+# Local Python environments and generated files
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+
+# Local credentials and client configuration
+.env
+.env.*
+!.env.example
+*.p8
+*.pem
+.mcp.json
+
+# Platform files
+.DS_Store
