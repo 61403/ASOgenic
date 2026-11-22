@@ -1,6 +1,6 @@
 ## Summary
 
-Describe the user-visible change and why it belongs in the public local MCP core.
+Describe the user-visible change and why it belongs in the local MCP server.
 
 ## Validation
 
@@ -8,7 +8,7 @@ Describe the user-visible change and why it belongs in the public local MCP core
 - [ ] I ran the public artifact verifier when changing allowlisted files.
 - [ ] I updated documentation, schemas, and tool descriptions as needed.
 
-## Safety and boundary
+## Safety
 
-- [ ] This pull request contains no credentials, private keys, customer data, or private screenshots.
-- [ ] This change does not add hosted-only, tenant, billing, OAuth, or operational code.
+- [ ] This pull request contains no credentials, private keys, customer data, or sensitive screenshots.
+- [ ] This change keeps the local MCP package self-contained and avoids deployment-specific configuration.

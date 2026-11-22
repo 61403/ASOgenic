@@ -8,6 +8,6 @@ Use [GitHub private vulnerability reporting](https://github.com/61403/ASOgenic/s
 when it is available. If it is unavailable, contact the repository owner through
 GitHub before disclosing technical details.
 
-The currently supported release is the latest tagged version of the public
-`asogenic` package. Reports involving the private hosted adapter are handled by
-the hosted service maintainers and should not contain tenant or credential data.
+Security fixes are supported on the latest release published on GitHub. Never
+include credentials or customer data in a report. For help with the managed
+ASOgenic experience, visit [asogenic.com](https://asogenic.com/).

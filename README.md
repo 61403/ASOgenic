@@ -12,16 +12,13 @@ and checking post-launch readiness.
 > ASOgenic is not affiliated with Apple. Review every proposed App Store
 > change before it is submitted or published.
 
-## What this repository contains
+## Choose your setup
 
-This is the canonical source for the shareable ASOgenic core: the local MCP
-runtime, public tool catalog, App Store Connect client, and deterministic ASO
-logic. It deliberately excludes a hosted dashboard, OAuth, tenant storage,
-billing, private operations, and customer information.
+Use this repository when you want to run ASOgenic as a local MCP server and
+keep your App Store Connect API key on your own machine.
 
-Community issues and pull requests belong here. The separate private hosted
-adapter consumes tagged releases of this package and must never become a
-forked copy of the public core.
+Prefer a managed setup? Visit [asogenic.com](https://asogenic.com/) for the
+hosted ASOgenic experience.
 
 ## Requirements
 

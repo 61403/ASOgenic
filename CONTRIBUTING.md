@@ -1,24 +1,21 @@
 # Contributing to ASOgenic
 
 Thanks for helping make local App Store workflows more useful and reliable.
-This repository is the canonical source for the shareable ASOgenic MCP core:
-the local stdio runtime, App Store Connect client, deterministic ASO logic, and
-public tool catalog.
+This project is the local ASOgenic MCP server: a stdio runtime, App Store
+Connect client, ASO workflows, and public tool catalog.
 
 Start with [SUPPORT.md](SUPPORT.md) to choose the right place for a question,
 bug, feature idea, or security report. By participating, you agree to follow
 the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-## Where a change belongs
+## Good contributions
 
-| Change | Destination |
-| --- | --- |
-| Local MCP tools, schemas, ASC calls, ASO algorithms, local runtime | This repository |
-| OAuth, hosted tenants, credential vaults, billing, dashboard, HTTP operations | Private hosted adapter |
-| A core change that affects hosted users | This repository first, then an adapter dependency update |
+This repository welcomes improvements to local MCP tools, schemas, App Store
+Connect workflows, ASO logic, documentation, and tests. Keep contributions
+usable from a local stdio MCP server and free of deployment-specific
+configuration.
 
-Do not copy a fix into the private adapter and later export it here. That
-would create two sources of truth and make community contributions disappear.
+For the managed ASOgenic experience, visit [asogenic.com](https://asogenic.com/).
 
 ## Before you open a pull request
 
@@ -30,7 +27,7 @@ would create two sources of truth and make community contributions disappear.
 4. Add or update focused tests when code behavior changes. Changes to a tool
    schema, description, or annotation must update the reviewed catalog contract
    in the same pull request.
-5. Never include App Store Connect keys, API tokens, private listings,
+5. Never include App Store Connect keys, API tokens, non-public listings,
    customer data, databases, logs, or screenshots containing private data.
 
 ## Local checks
@@ -51,20 +48,15 @@ distribution, verifies their inventories, and starts the installed local MCP
 wheel in a fresh environment. Please run focused tests relevant to your change
 as well.
 
-## Public/private boundary
+## Release artifact review
 
 Every pull request is checked against `release/public-artifact.toml`. Add a
-file only when it has been reviewed for provenance, licensing, secrets, and the
-public/private architecture boundary. Do not weaken the allowlist to export
-private code or operational material.
-
-Maintainers merge public-core PRs here, release a tagged version, then update
-the private adapter to an exact package version. The adapter must pass its own
-integration and boundary checks before deployment.
+file only when it has been reviewed for provenance, licensing, and secrets. Do
+not weaken the allowlist just to include unreviewed material.
 
 ## Review expectations
 
 Maintainers aim to acknowledge good-faith contributions promptly. A pull
 request may need revision for correctness, API compatibility, safety,
-documentation, or the public/private boundary. We value small, well-explained
+documentation, or release-artifact review. We value small, well-explained
 changes and respectful technical discussion.

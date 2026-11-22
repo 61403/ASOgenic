@@ -1,6 +1,5 @@
-# Source-to-candidate allowlist for the public local stdio MCP core.
-# This manifest is the boundary contract between the public core and the
-# private hosted adapter; it is not a mechanism for mirroring private source.
+# Source-to-candidate allowlist for the local stdio MCP package.
+# This manifest records the files reviewed for a public release.
 required = [
   "src/asogenic/__init__.py",
   "src/asogenic/aso/__init__.py",
@@ -54,7 +53,7 @@ local_boundary_review = true
 release_owner = "61403"
 approved_at = "2026-11-20"
 license = "MIT"
-history_scope = "The public repository begins from the generated candidate; no private Git objects are copied."
+history_scope = "The public repository begins from the reviewed release candidate."
 
 # Source package files required by the standalone local server and its catalog.
 [[files]]
@@ -244,8 +243,7 @@ source = "release/public/LICENSE"
 destination = "LICENSE"
 optional = true
 
-# Candidate-only documentation and package metadata. No private README or docs
-# are swept into the export.
+# Candidate-only documentation and package metadata are explicitly listed.
 [[files]]
 source = ".gitignore"
 
@@ -272,8 +270,8 @@ source = "release/public/pyproject.toml"
 destination = "pyproject.toml"
 
 # The public repository verifies every PR from its own clean checkout. These
-# controls contain no private runtime code and are part of the reviewed source
-# distribution so the protection does not disappear after the initial export.
+# controls are part of the reviewed source distribution so the protection does
+# not disappear after the initial export.
 [[files]]
 source = "release/public-artifact.toml"
 destination = "release/public-artifact.toml"

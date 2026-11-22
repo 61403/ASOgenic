@@ -28,5 +28,5 @@ body:
       options:
         - label: I searched existing issues before opening this request.
           required: true
-        - label: This proposal does not include credentials, private app data, or hosted-only functionality.
+        - label: This proposal does not include credentials, non-public app data, or deployment-specific configuration.
           required: true
